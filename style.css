@@ -1,0 +1,476 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fde9f0 0%, #ffe6f0 100%);
+            font-family: 'Tajawal', 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* خلفية القلوب والورود المتحركة (canvas + عناصر عائمة) */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+       
+        .floating-element {
+            position: absolute;
+            font-size: 1.8rem;
+            opacity: 0.5;
+            animation: floatAround 12s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes floatAround {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-40px) rotate(10deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.3;
+            }
+        }
+
+        /* الحاوية الرئيسية */
+        .invitation-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1100px;
+            margin: 2rem auto;
+            transition: all 0.4s ease;
+        }
+
+        /* زر الافتتاح (Open Invitation) */
+        .open-btn-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .open-btn {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            border: none;
+            padding: 1.3rem 2.8rem;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff8e7;
+            font-family: 'Reem Kufi', cursive;
+            border-radius: 70px;
+            cursor: pointer;
+            box-shadow: 0 25px 35px rgba(233, 30, 99, 0.4);
+            transition: 0.3s;
+            animation: pulseGlow 1.8s infinite, floatBtn 2.5s infinite ease;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            backdrop-filter: blur(2px);
+        }
+
+        .open-btn i {
+            font-size: 2rem;
+            animation: iconShake 1.2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.5);
+                transform: scale(1);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(233, 30, 99, 0);
+                transform: scale(1.03);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(233, 30, 99, 0);
+                transform: scale(1);
+            }
+        }
+
+        @keyframes floatBtn {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes iconShake {
+            0%, 100% {
+                transform: rotate(0);
+            }
+            25% {
+                transform: rotate(15deg);
+            }
+            75% {
+                transform: rotate(-15deg);
+            }
+        }
+
+        .open-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #ff4081, #ad1457);
+            box-shadow: 0 30px 40px rgba(233, 30, 99, 0.6);
+        }
+
+        /* محتوى الدعوة (يظهر بعد الضغط) */
+        .invitation-details {
+            background: rgba(255, 248, 245, 0.94);
+            backdrop-filter: blur(10px);
+            border-radius: 70px 40px 70px 40px;
+            padding: 2rem 2rem 3rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.2), inset 0 1px 3px rgba(255, 255, 255, 0.9);
+            border: 1px solid #ffcdd2;
+            transition: all 0.8s;
+            display: none;
+            animation: fadeSlideUp 0.9s ease-out;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(45px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bismillah {
+            font-size: 1.8rem;
+            font-family: 'Amiri Quran', serif;
+            text-align: center;
+            color: #7b1e4a;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .verse {
+            text-align: center;
+            font-size: 1.5rem;
+            font-family: 'Amiri Quran', serif;
+            background: #fce4ec;
+            padding: 1.2rem;
+            border-radius: 60px;
+            margin: 1rem 0;
+            color: #4a1a2e;
+            line-height: 1.8;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+        }
+
+        .ruqaa-title {
+            font-family: 'Reem Kufi', cursive;
+            font-size: 2rem;
+            text-align: center;
+            margin: 1.5rem 0 1rem;
+            color: #b13e6b;
+            background: #fff0f3;
+            display: inline-block;
+            width: auto;
+            padding: 0.6rem 2rem;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            box-shadow: inset 0 -1px 0 #ffb7c5, 0 5px 12px #ffe0e6;
+        }
+
+        .parents-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 1.5rem 0;
+        }
+
+        .parent-card {
+            background: #fff3f5;
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem;
+            border-radius: 40px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+            border-right: 5px solid #e91e63;
+            border-left: 5px solid #f48fb1;
+        }
+
+        .couple-names {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            background: linear-gradient(120deg, #fff0f5, #ffe4ed);
+            padding: 1.5rem;
+            border-radius: 80px;
+        }
+
+        .groom, .bride {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .groom span, .bride span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 300;
+            color: #ad4975;
+        }
+
+        hr.divider {
+            margin: 1.2rem auto;
+            width: 80px;
+            height: 3px;
+            background: #e91e63;
+            border-radius: 10px;
+        }
+
+        .cards-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            flex: 1;
+            min-width: 240px;
+            background: #ffffffdd;
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+            transition: 0.2s;
+            border: 1px solid #ffcdd2;
+        }
+
+        .info-card i {
+            font-size: 2.2rem;
+            color: #e84373;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.6rem;
+            color: #7f2b4f;
+            margin-bottom: 8px;
+        }
+
+        .map-btn {
+            background: #e84373;
+            border: none;
+            padding: 10px 22px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            color: white;
+            margin-top: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .map-btn:hover {
+            background: #c2185b;
+            transform: scale(1.03);
+        }
+
+        .date-large {
+            font-size: 1.9rem;
+            font-weight: bold;
+            direction: ltr;
+            font-family: monospace;
+            letter-spacing: 2px;
+            background: #f3e5f5;
+            display: inline-block;
+            padding: 8px 22px;
+            border-radius: 70px;
+            margin-top: 10px;
+        }
+
+        .god-names {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #ac3c64;
+            background: #ffe7ef;
+            padding: 0.8rem;
+            border-radius: 60px;
+        }
+
+        .god-names span {
+            background: #ffdae6;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #b96989;
+        }
+
+        /* استجابة */
+        @media (max-width: 700px) {
+            .open-btn {
+                font-size: 1.4rem;
+                padding: 1rem 1.8rem;
+            }
+            .verse {
+                font-size: 1.2rem;
+            }
+            .ruqaa-title {
+                font-size: 1.4rem;
+            }
+            .parent-card {
+                font-size: 1rem;
+            }
+        }
+        .countdown-section {
+            background: linear-gradient(135deg, #ffeff5, #ffe0ea);
+            border-radius: 70px;
+            margin: 2rem 0 1.5rem;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(233, 30, 99, 0.2);
+            border: 1px solid #ffb7c5;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #b13e6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .countdown-title i {
+            font-size: 1.8rem;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); color: #e91e63; }
+        }
+
+        .timer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem;
+            margin: 1rem 0;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 30px;
+            padding: 0.8rem 1.4rem;
+            min-width: 95px;
+            text-align: center;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            animation: softBounce 2s infinite;
+        }
+
+        .time-box:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes softBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .time-number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            font-family: monospace;
+            background: linear-gradient(145deg, #e84373, #c2185b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .time-label {
+            font-size: 1rem;
+            color: #ad4975;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .excitement-message {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            font-weight: bold;
+            background: #e8437322;
+            display: inline-block;
+            padding: 0.4rem 1.5rem;
+            border-radius: 60px;
+            color: #b13e6b;
+            animation: pulseText 1.5s infinite;
+        }
+
+        @keyframes pulseText {
+            0% { opacity: 0.6; transform: scale(0.98);}
+            100% { opacity: 1; transform: scale(1);}
+        }

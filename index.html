@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Reem+Kufi&family=Tajawal&display=swap" rel="stylesheet">
+    <!-- Font Awesome للشعارات والأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Reem+Kufi&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Invitation</title>
+</head>
+<body >
+ 
+<div class="bg-animation">
+    <canvas id="heartCanvas"></canvas>
+    <!-- عناصر عائمة إضافية من قلوب وورود -->
+    <div class="floating-element" style="top: 15%; left: 5%; animation-duration: 14s;"><i class="fas fa-heart" style="color:#ff7b9c;"></i></div>
+    <div class="floating-element" style="top: 70%; left: 88%; animation-duration: 11s; animation-delay: 1s;"><i class="fas fa-leaf" style="color:#ff88a5;"></i></div>
+    <div class="floating-element" style="top: 40%; left: 92%; animation-duration: 16s;"><i class="fas fa-heart" style="color:#ff5982;"></i></div>
+    <div class="floating-element" style="top: 85%; left: 12%; animation-duration: 13s;"><i class="fas fa-flower" style="color:#f48fb1;"></i></div>
+    <div class="floating-element" style="top: 20%; left: 85%; animation-duration: 15s;"><i class="fas fa-heart" style="color:#ffb7c5;"></i></div>
+    <div class="floating-element" style="top: 55%; left: 3%; animation-duration: 12s;"><i class="fas fa-feather-alt" style="color:#ff99bb;"></i></div>
+</div>
+
+<div class="invitation-container" id="invitationContainer">
+    <!-- حاوية زر الافتتاح -->
+    <div id="openBtnWrapper" class="open-btn-wrapper">
+        <button class="open-btn" id="openInviteBtn">
+            <i class="fas fa-envelope-open-text"></i> Open Invitation
+            <i class="fas fa-heart"></i>
+        </button>
+    </div>
+
+    <!-- تفاصيل الدعوة (مخفية في البداية) -->
+    <div id="invitationDetails" class="invitation-details">
+        <!-- البسملة -->
+        <div class="bismillah">بسم الله الرحمن الرحيم</div>
+
+        <!-- الآية القرآنية -->
+        <div class="verse">
+           ﴾ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴿
+            <div style="font-size:0.9rem; margin-top:8px;">[ سورة الروم : 21 ]</div>
+        </div>
+        <div style="text-align: center;">
+            <div class="ruqaa-title">أل أبودنقل و أل الخطيب</div>
+        </div>
+        <div style="font-size: 1.2rem; text-align:center; margin:0.5rem 0 1rem;">يتشرفان بكل حب</div>
+
+        <div class="parents-row">
+            <div class="parent-card">
+                <i class="fas fa-user-tie"></i> الحاج <br> عبدالكريم محمد علي
+            </div>
+            <div class="parent-card">
+                <i class="fas fa-user-tie"></i> الحاج <br> خالد عبدالرحمن أبودنقل
+              
+            </div>
+        </div>
+
+        <div style="text-align: center; font-size:1.2rem;">بدعوة حضراتكم لحضور حفل زفاف</div>
+
+        <div class="couple-names">
+            <div class="bride">
+                كريمة الثاني <br> <span style="font-size:1.6rem;"> R </span>
+                <span>ليسانس آداب إنجليزي </span>
+            </div>
+            <div class="groom">
+                شقيق الأول <br> <span style="font-size:1.6rem;">أ/ عادل</span>
+                <span> بكالوريوس تجارة </span>
+            </div>
+        </div>
+
+        <!-- كارت القاعة + الخريطة، وكارت التاريخ -->
+        <div class="cards-flex">
+            <div class="info-card">
+                <i class="fas fa-landmark"></i>
+                <h3>قاعة جراند ستار 2</h3>
+                <button id="mapButton" class="map-btn"><i class="fas fa-map-marker-alt"></i> عرض الموقع على الخريطة</button>
+            </div>
+            <div class="info-card">
+                <i class="far fa-calendar-alt"></i>
+                <h3>موعد الزفاف</h3>
+                <div class="date-large">24 / 6 / 2026</div>
+
+            </div>
+        </div>
+
+       <div class="countdown-section" id="countdownSection">
+            <div class="countdown-title">
+                <i class="fas fa-hourglass-half"></i>
+               يسعدنا إستقبال حضراتكم
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="timer" id="timer">
+                <div class="time-box"><div class="time-number" id="days">00</div><div class="time-label">يوم</div></div>
+                <div class="time-box"><div class="time-number" id="hours">00</div><div class="time-label">ساعة</div></div>
+                <div class="time-box"><div class="time-number" id="minutes">00</div><div class="time-label">دقيقة</div></div>
+                <div class="time-box"><div class="time-number" id="seconds">00</div><div class="time-label">ثانية</div></div>
+            </div>
+            <div class="excitement-message" id="excitementMsg">
+                ✨ كل يوم بيقربنا من الفرحة الكبيرة ✨
+            </div>
+        </div>
+
+        <footer>
+            🤍 جعل الله أيامكم فرح وسعادة ❤
+        </footer>
+    </div>
+</div>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
